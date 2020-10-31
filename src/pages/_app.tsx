@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Head from 'next/head'
 
 import 'katex/dist/katex.min.css'
 
@@ -20,13 +19,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <CssBaseline />
-      <ThemeProvider theme={false ? darkTheme : lightTheme}>
+
+      <ThemeProvider theme={true ? darkTheme : lightTheme}>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

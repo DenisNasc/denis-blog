@@ -1,5 +1,5 @@
 ﻿---
-title: CÁLCULO III - Introdução e EDO's lineares de 1ª ordem
+title: Introdução e EDO's lineares de 1ª ordem
 ---
 
 ## 1. Introdução

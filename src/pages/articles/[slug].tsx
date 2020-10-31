@@ -5,10 +5,12 @@ import matter, { GrayMatterFile } from 'gray-matter'
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 
+import LayoutDefault from 'style/layouts/LayoutDefault'
 import LayoutPost from 'style/layouts/LayoutPost'
+
 import Markdown from 'components/utils/Markdown'
 
-import LateralMenu from 'components/molecules/LateralMenu'
+import LateralMenu from 'components/molecules/LateralMenuTopics'
 
 interface PropsPost {
   content: string
@@ -30,16 +32,19 @@ const Post: NextPage<PropsPost, ReturnFromGetInitialProps> = ({ content, data })
   const { title } = data
 
   return (
-    <Grid container className={classes.root}>
-      <Grid className={classes.lateralMenu} item xs={2}>
-        <LateralMenu topics={topics} />
+    <LayoutDefault pageTitle={title}>
+      <Grid container className={classes.root}>
+        <Grid className={classes.lateralMenu} item xs={2}>
+          <LateralMenu topics={topics} />
+        </Grid>
+
+        <Grid className={classes.gridPaper} container item justify="center" xs={10}>
+          <LayoutPost postTitle={title}>
+            <Markdown>{content}</Markdown>
+          </LayoutPost>
+        </Grid>
       </Grid>
-      <Grid container item justify="center" xs={10}>
-        <LayoutPost postTitle={title}>
-          <Markdown>{content}</Markdown>
-        </LayoutPost>
-      </Grid>
-    </Grid>
+    </LayoutDefault>
   )
 }
 
@@ -61,7 +66,10 @@ export default Post
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: { width: '100vw', height: '100vh' },
+    root: { height: '100%' },
     lateralMenu: {},
+    gridPaper: {
+      height: '100%',
+    },
   })
 )

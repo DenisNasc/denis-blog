@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       height: '100%',
-      maxHeight: '100vh',
       overflowY: 'scroll',
       width: '100%',
       borderRadius: '0px',
